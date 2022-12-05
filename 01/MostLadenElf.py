@@ -19,5 +19,12 @@ df['ElfID'].bfill(inplace = True)
 dfSum = df.groupby(['ElfID']).sum()
 
 # Find the Elf carrying the most Calories. How many total Calories is that Elf carrying?
-maxCalories = max(dfSum['CaloriesPerItem'])
-print(maxCalories)
+MaxCalories = max(dfSum['CaloriesPerItem'])
+print(MaxCalories)
+
+# filter top 3
+dfSumFiltered = dfSum.sort_values(by=['CaloriesPerItem'], ascending=False).head(n=3)
+
+# Find the top three Elves carrying the most Calories. How many Calories are those Elves carrying in total?
+MaxNCalories = dfSumFiltered['CaloriesPerItem'].sum()
+print(MaxNCalories)

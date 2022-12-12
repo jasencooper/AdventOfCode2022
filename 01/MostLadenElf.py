@@ -1,7 +1,7 @@
-import pandas as pd, numpy as np
+import sys, pandas as pd, numpy as np
 
-# load dataframe from file names input
-df = pd.read_csv('input', names = ['CaloriesPerItem'], skip_blank_lines = False)
+# load dataframe from file named input
+df = pd.read_csv(sys.path[0] + '/input', names = ['CaloriesPerItem'], skip_blank_lines = False)
 
 # column definition: return row index if CaloriesPerItem is null
 col =  df.apply(lambda row: df['CaloriesPerItem'].isnull() * df.index)
